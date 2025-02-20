@@ -8,7 +8,8 @@ const mongoose = require('mongoose')
 const orderRoutes = require ('./api/routes/orders');
 const productRoutes = require ('./api/routes/products');
 
-mongoose.connect('mongodb+srv://raaasd187:XeRTgS4EDd8sXYlJ@node-rest-shop.0ibkv.mongodb.net/nodeDb').then(result => console.log('connected'))
+// .then(result => console.log('connected'))
+mongoose.connect('mongodb+srv://raaasd187:' + process.env.MONGO_ATLAS_PWD + '@node-rest-shop.0ibkv.mongodb.net/nodeDb')
 
 //this will tell which api is being hitted firtsly installed moragn library for this
 app.use(morgan('dev'))
