@@ -10,8 +10,8 @@ router.get('/', (req, res, next) => {
         .exec()
         .then(docs => {
             const response = {
-                count : docs.length,
-                products : docs
+                count: docs.length,
+                products: docs
             }
             res.status(200).json(response)
         })
@@ -33,9 +33,9 @@ router.post('/', (req, res, next) => {
             res.status(201).json({
                 message: 'product created successfully',
                 product: {
-                    _id : result._id,
-                    name : result.name,
-                    price : result.price
+                    _id: result._id,
+                    name: result.name,
+                    price: result.price
                 }
             })
         })
@@ -45,7 +45,6 @@ router.post('/', (req, res, next) => {
                 error: err
             })
         })
-
 })
 
 
@@ -56,7 +55,7 @@ router.get('/:productId', (req, res, next) => {
         .exec()
         .then(doc => {
             res.status(200).json({
-                product : doc
+                product: doc
             })
         })
         .catch(err => {
@@ -74,12 +73,12 @@ router.patch('/:productId', (req, res, next) => {
         updateOps[ops] = req.body[ops]
     }
     Product.updateOne({ _id: id }, {
-        $set: updateOps 
+        $set: updateOps
     })
         .exec()
         .then(result => {
-            res.status(200).json({ 
-                message : "Updated successfully" 
+            res.status(200).json({
+                message: "Updated successfully"
             })
         })
         .catch(err => {
@@ -97,7 +96,7 @@ router.delete('/:productId', (req, res, next) => {
         .exec()
         .then(result => {
             res.status(200).json({
-               mesasge : "deleted succesfully"
+                mesasge: "deleted succesfully"
             })
         })
         .catch(err => {
