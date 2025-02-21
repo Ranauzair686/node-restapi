@@ -1,18 +1,20 @@
 const express = require ('express');
 const morgan = require ('morgan');
 const app = express();
+const connectDB = require('./config/db')
 const bodyParser = require('body-parser')  
 const mongoose = require('mongoose')
 
 
-const orderRoutes = require ('./api/routes/orders');
-const productRoutes = require ('./api/routes/products');
+const orderRoutes = require ('./routes/orders');
+const productRoutes = require ('./routes/products');
 
 // .then(result => console.log('connected'))
-mongoose.connect('mongodb+srv://raaasd187:' + process.env.MONGO_ATLAS_PWD + '@node-rest-shop.0ibkv.mongodb.net/nodeDb')
+
 
 //this will tell which api is being hitted firtsly installed moragn library for this
 app.use(morgan('dev'))
+connectDB();
 
 // for parsiong the body
 app.use(bodyParser.urlencoded({extended : false}))
